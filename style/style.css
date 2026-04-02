@@ -1,0 +1,77 @@
+body { 
+    font-family: 'Handjet', cursive; 
+    background: #80f2df; 
+    margin: 0; 
+    padding: 20px; 
+    padding-top: 7%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+h1 { margin-bottom: 10px; }
+.board { 
+    display: grid; 
+    gap: 15px; 
+    grid-template-columns: repeat(3, minmax(100px, 1fr)); 
+    width: min(560px, 100%); 
+}            
+.card { 
+    display: block;
+    cursor: pointer; 
+    background: #76229a; 
+    color: transparent; 
+    border-radius: 10px; 
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 2rem; 
+    user-select: none; 
+    box-shadow: 1px 4px 8px rgba(0 0 0 / 87%); 
+    transition: transform .1s ease, background .2s ease;
+    transform: perspective(600px) rotateY(180deg); 
+    transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1), background 0.3s ease, color 0.2s ease;
+}
+.card.revealed { 
+    background: #fff; 
+    color: #111; 
+    transform: perspective(600px) rotateY(0deg);
+}
+.card.matched { 
+    background: #28a745; 
+    color: #fff; 
+    transform: perspective(600px) rotateY(0deg);
+}
+.card:active { transform: perspective(600px) rotateY(180deg) scale(0.95); }
+.card.revealed:active, .card.matched:active { 
+    transform: perspective(600px) rotateY(0deg) scale(0.95); 
+}
+.status { 
+    margin-top: 15px; 
+    font-size: 1rem; 
+}
+.controls { 
+    margin: 12px 0; 
+    display: flex; 
+    gap: 8px; 
+}
+button#restart {
+    font-family: 'Handjet', cursive; 
+    font-size: 1rem; 
+    padding: 8px 12px; 
+    margin-bottom: 10px;
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    background: #76229a;
+    box-shadow: 1px 4px 8px rgba(0 0 0 / 87%); 
+    color: white; 
+
+}
+#restart:active { transform: scale(0.97); }
+
+@media (max-width: 400px) {
+    body{
+        padding-top: 25%;
+    }
+    .board { grid-template-columns: repeat(2, minmax(100px, 1fr)); }
+}
